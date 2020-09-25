@@ -9,12 +9,13 @@
         "airbnb-base"
     ],
     "parserOptions": {
-        "parser": "@typescript-eslint/parser",
+//        "parser": "@typescript-eslint/parser",
+        "parser": "babel-eslint",
         "sourceType": "module"
     },
     "plugins": [
-        "vue",
-        "@typescript-eslint"
+        "vue"
+//        "@typescript-eslint"
     ],
     "rules": {
     }
