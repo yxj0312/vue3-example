@@ -5,13 +5,14 @@
     },
     "extends": [
         "eslint:recommended",
-        "plugin:vue/vue3-essential",
+        "plugin:vue/vue3-recommended",
+        "plugin:tailwind/recommended",
         "airbnb-base"
     ],
     "parserOptions": {
+        "parser": "babel-eslint"
 //        "parser": "@typescript-eslint/parser",
-        "parser": "babel-eslint",
-        "sourceType": "module"
+//        "sourceType": "module"
     },
     "plugins": [
         "vue"
