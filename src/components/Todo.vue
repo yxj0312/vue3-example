@@ -10,20 +10,60 @@
           class="mt-4"
           @submit.prevent="addTodo"
         >
-          <input
-            v-model="todoFromInput"
-            type="text"
-            class="w-full border border-gray-500 rounded placeholder-gray-600 px-2 py-3"
-            placeholder="What needs to be done?"
-          >
+          <label>
+            <input
+              v-model="state.todoFromInput"
+              type="text"
+              class="w-full border border-gray-500 rounded placeholder-gray-600 px-2 py-3"
+              placeholder="What needs to be done?"
+            >
+          </label>
         </form>
+        <div v-if="state.todos.length">
+          <ul
+            class="text-2xl mt-4 space-y-6"
+          >
+            <li
+              v-for="todo in state.todos"
+              :key="todo.id"
+              class="flex items-center justify-between"
+            >
+              <div class="flex items-center">
+                <label>
+                  <input
+                    v-model="todo.isComplete"
+                    type="checkbox"
+                  >
+                </label>
+                <div
+                  class="ml-4"
+                  :class="{'line-through' : todo.isComplete}"
+                >
+                  {{ todo.description }}
+                </div>
+              </div>
+              <button @click="deleteTodo(todo.id)">
+                &times;
+              </button>
+            </li>
+          </ul>
+          <div class="border-t border-gray-500 py-2 mt-6">
+            Items Left: {{ itemsLeft }}
+          </div>
+        </div>
+        <div
+          v-else
+          class="mt-4"
+        >
+          Nothing to do! Add a new item...
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { reactive } from 'vue';
+import { reactive, computed } from 'vue';
 
 export default {
   name: 'Todo',
@@ -55,6 +95,37 @@ export default {
         },
       ],
     });
+
+    const itemsLeft = computed(() => state.todos.filter((todo) => !todo.isComplete).length);
+
+    function addTodo() {
+      state.todos.push({
+        id: state.todoId,
+        description: state.todoFromInput,
+        isComplete: false,
+      });
+
+      state.todoId += 1;
+      state.todoFromInput = '';
+    }
+
+    function deleteTodo(id) {
+      state.todos = state.todos.filter((todo) => todo.id !== id);
+    }
+
+    return {
+      state,
+      itemsLeft,
+      addTodo,
+      deleteTodo,
+    };
+  },
+
+  watch: {
+    todoId(newValue, oldValue) {
+      console.log(`New Value: ${newValue}`);
+      console.log(`Old Value: ${oldValue}`);
+    },
   },
 };
 </script>
