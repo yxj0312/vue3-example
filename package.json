@@ -6,7 +6,6 @@
     "build": "vite build"
   },
   "dependencies": {
-    "autoprefixer": "^10.0.0",
     "tailwindcss": "^1.8.10",
     "vue": "^3.0.0-rc.1"
   },
