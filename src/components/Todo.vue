@@ -63,7 +63,9 @@
 </template>
 
 <script>
-import { reactive, computed } from 'vue';
+import {
+  reactive, computed, onMounted, watch,
+} from 'vue';
 
 export default {
   name: 'Todo',
@@ -73,7 +75,7 @@ export default {
       required: true,
     },
   },
-  setup() {
+  setup(props) {
     const state = reactive({
       todoFromInput: '',
       todoId: 4,
@@ -98,6 +100,13 @@ export default {
 
     const itemsLeft = computed(() => state.todos.filter((todo) => !todo.isComplete).length);
 
+    onMounted(() => {
+      // eslint-disable-next-line no-console
+      console.log('Todo mounted');
+      // eslint-disable-next-line no-console
+      console.log(props.title);
+    });
+
     function addTodo() {
       state.todos.push({
         id: state.todoId,
@@ -113,19 +122,22 @@ export default {
       state.todos = state.todos.filter((todo) => todo.id !== id);
     }
 
+    watch(
+      () => state.todoId,
+      (newValue, oldValue) => {
+        // eslint-disable-next-line no-console
+        console.log(`New Value: ${newValue}`);
+        // eslint-disable-next-line no-console
+        console.log(`Old Value: ${oldValue}`);
+      },
+    );
+
     return {
       state,
       itemsLeft,
       addTodo,
       deleteTodo,
     };
-  },
-
-  watch: {
-    todoId(newValue, oldValue) {
-      console.log(`New Value: ${newValue}`);
-      console.log(`Old Value: ${oldValue}`);
-    },
   },
 };
 </script>
