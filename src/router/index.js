@@ -6,7 +6,7 @@ const router = createRouter({
   history: routerHistory,
   routes: [
     {
-      path: '/todo-view',
+      path: '/',
       component: () => import('../views/TodoView.vue'),
     },
   ],

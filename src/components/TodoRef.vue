@@ -64,7 +64,7 @@ import {
 } from 'vue';
 
 export default {
-  name: 'Todo',
+  name: 'TodoRef',
   props: {
     title: {
       type: String,
@@ -137,7 +137,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-
-</style>
