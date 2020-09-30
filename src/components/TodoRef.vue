@@ -48,6 +48,10 @@
       <div class="border-t border-gray-500 py-2 mt-6">
         Items Left: {{ itemsLeft }}
       </div>
+      <div class="border-t border-gray-500 py-2 mt-1">
+        <div>x: {{ x }}</div>
+        <div>y: {{ y }}</div>
+      </div>
     </div>
     <div
       v-else
@@ -60,7 +64,7 @@
 
 <script>
 import {
-  computed, onMounted, watch, ref,
+  computed, onMounted, watch, ref, onUnmounted,
 } from 'vue';
 
 export default {
@@ -72,6 +76,22 @@ export default {
     },
   },
   setup(props) {
+    const x = ref(0);
+    const y = ref(0);
+
+    function update(e) {
+      x.value = e.pageX;
+      y.value = e.pageY;
+    }
+
+    onMounted(() => {
+      window.addEventListener('mousemove', update);
+    });
+
+    onUnmounted(() => {
+      window.removeEventListener('mousemove', update);
+    });
+
     const todoFromInput = ref('');
     const todoId = ref(4);
     const todos = ref([
@@ -133,6 +153,8 @@ export default {
       itemsLeft,
       addTodo,
       deleteTodo,
+      x,
+      y,
     };
   },
 };

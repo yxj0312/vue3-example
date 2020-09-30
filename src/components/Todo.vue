@@ -48,6 +48,10 @@
       <div class="border-t border-gray-500 py-2 mt-6">
         Items Left: {{ itemsLeft }}
       </div>
+      <div class="border-t border-gray-500 py-2 mt-1">
+        <div>x: {{ x }}</div>
+        <div>y: {{ y }}</div>
+      </div>
     </div>
     <div
       v-else
@@ -62,6 +66,7 @@
 import {
   computed, onMounted, reactive, watch,
 } from 'vue';
+import useMousePosition from '../functions/useMousePosition';
 
 export default {
   name: 'Todo',
@@ -72,6 +77,7 @@ export default {
     },
   },
   setup(props) {
+    const { x, y } = useMousePosition();
     const state = reactive({
       todoFromInput: '',
       todoId: 4,
@@ -133,6 +139,8 @@ export default {
       itemsLeft,
       addTodo,
       deleteTodo,
+      x,
+      y,
     };
   },
 };
