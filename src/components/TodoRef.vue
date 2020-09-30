@@ -3,6 +3,14 @@
     <h2 class="text-2xl font-semibold">
       {{ title }}
     </h2>
+    <div class="space-x-4">
+      <button class="px-2 py-2 rounded bg-blue-500 text-white">
+        Toggle Items left
+      </button>
+      <button class="px-2 py-2 rounded bg-blue-500 text-white">
+        Toggle Mouse Position
+      </button>
+    </div>
     <form
       action="#"
       class="mt-4"
