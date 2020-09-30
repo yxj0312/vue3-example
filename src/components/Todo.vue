@@ -49,8 +49,8 @@
         Items Left: {{ itemsLeft }}
       </div>
       <div class="border-t border-gray-500 py-2 mt-1">
-        <div>x: {{ x }}</div>
-        <div>y: {{ y }}</div>
+        <div>x: {{ mouseX }}</div>
+        <div>y: {{ mouseY }}</div>
       </div>
     </div>
     <div
@@ -77,7 +77,7 @@ export default {
     },
   },
   setup(props) {
-    const { x, y } = useMousePosition();
+    const { x: mouseX, y: mouseY } = useMousePosition();
     const state = reactive({
       todoFromInput: '',
       todoId: 4,
@@ -139,8 +139,8 @@ export default {
       itemsLeft,
       addTodo,
       deleteTodo,
-      x,
-      y,
+      mouseX,
+      mouseY,
     };
   },
 };

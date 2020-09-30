@@ -52,6 +52,10 @@
         <div>x: {{ x }}</div>
         <div>y: {{ y }}</div>
       </div>
+      <div class="border-t border-gray-500 py-2 mt-1">
+        <div>x: {{ mouseX }}</div>
+        <div>y: {{ mouseY }}</div>
+      </div>
     </div>
     <div
       v-else
@@ -66,6 +70,7 @@
 import {
   computed, onMounted, watch, ref, onUnmounted,
 } from 'vue';
+import useMousePositionReactive from '../functions/useMousePositionReactive';
 
 export default {
   name: 'TodoRef',
@@ -76,6 +81,7 @@ export default {
     },
   },
   setup(props) {
+    const { x: mouseX, y: mouseY } = useMousePositionReactive();
     const x = ref(0);
     const y = ref(0);
 
@@ -155,6 +161,8 @@ export default {
       deleteTodo,
       x,
       y,
+      mouseX,
+      mouseY,
     };
   },
 };
