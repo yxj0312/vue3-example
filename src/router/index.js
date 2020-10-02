@@ -9,6 +9,10 @@ const router = createRouter({
       path: '/',
       component: () => import('../views/TodoView.vue'),
     },
+    {
+      path: '/teleport',
+      component: () => import('../views/Teleport.vue'),
+    },
   ],
 });
 
