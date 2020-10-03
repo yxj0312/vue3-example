@@ -13,6 +13,10 @@ const router = createRouter({
       path: '/teleport',
       component: () => import('../views/Teleport.vue'),
     },
+    {
+      path: '/change-detection',
+      component: () => import('../views/ChangeDetection.vue'),
+    },
   ],
 });
 
