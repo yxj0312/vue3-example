@@ -7,14 +7,22 @@ const router = createRouter({
   routes: [
     {
       path: '/',
+      name: 'home',
+      component: () => import('../views/Home.vue'),
+    },
+    {
+      path: '/todo-views',
+      name: 'todo-views',
       component: () => import('../views/TodoView.vue'),
     },
     {
       path: '/teleport',
+      name: 'teleport',
       component: () => import('../views/Teleport.vue'),
     },
     {
       path: '/change-detection',
+      name: 'change-detection',
       component: () => import('../views/ChangeDetection.vue'),
     },
   ],
