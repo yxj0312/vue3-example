@@ -25,6 +25,11 @@ const router = createRouter({
       name: 'change-detection',
       component: () => import('../views/ChangeDetection.vue'),
     },
+    {
+      path: '/multiple-vmodels',
+      name: 'multiple-vmodels',
+      component: () => import('../views/MultipleVmodels.vue'),
+    },
   ],
 });
 
