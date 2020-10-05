@@ -3,7 +3,6 @@
     <div class="flex">
       <div class="flex-shrink-0">
         <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
-          <!-- Heroicon name: scale -->
           <slot name="icon" />
         </div>
       </div>
